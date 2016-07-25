@@ -1,0 +1,20 @@
+{
+  "name": "nodeChat",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Brian Stumbaugh <brian.stumbaugh@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/beezy12/nodeChat",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.4.8"
+  }
+}
