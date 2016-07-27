@@ -7,9 +7,13 @@ const app = express()
 
 const PORT = process.env.PORT || 3000
 
+app.set('view engine', 'pug')
+app.use(express.static('public'))
+
+
 
 app.get('/', (req, res) => {
-    res.send('you made this')
+    res.render('index')
 })
 
 
