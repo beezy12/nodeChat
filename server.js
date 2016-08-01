@@ -27,6 +27,7 @@ ws.on('connection', socket => {
     socket.on('sendChat', (msg) => {
 
         socket.broadcast.emit('receiveChat', msg)
+
     })
 
 })
