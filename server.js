@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express()
-// const server = require('http')createServer(app)
+const server = require('http').createServer(app)
 const ws = require('socket.io')(server)
 
 const PORT = process.env.PORT || 3000
@@ -20,3 +20,14 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`server up and running on port: ${PORT}`)
 })
+
+
+ws.on('connection', socket => {
+
+    socket.on('sendChat', (msg) => {
+
+        socket.broadcast.emit('receiveChat', msg)
+    })
+
+})
+
