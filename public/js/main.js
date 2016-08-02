@@ -8,9 +8,10 @@
     })
 
 
-    // so first the form is submitted below with the values being passed into 'sendChat' socket through the server, which then calls the 'receiveChat', THEN the displayChat function is called here...
+    // so first the form is submitted below with the values being passed into 'sendChat' socket through the server, which then calls the 'receiveChat', THEN the displayChat function is called here...'displayChat' function is below
     ws.on('receiveChat', msg => {
-
+        console.log('msg', msg)
+        displayChat(msg.name, msg.convo)  // these are the keys assigned in the ws.emit below
     })
 
 
@@ -31,7 +32,7 @@
             convo: c
         })
 
-        // after text is sent, display it
+        // after text is sent, the server receives it and calls 'receiveChat' above, so I call this 'displayChat' function inside of it
         displayChat(n, c)
 
         text.value = ''
@@ -40,4 +41,20 @@
 
     })
 
-})
+    const displayChat = (name, words) => {
+        const li = generateLI(name, words)
+
+        ul.appendChild(li)
+    }
+
+    const generateLI = (name, words) => {
+        const li = document.createElement('li')
+        const textNode = document.createTextNode(`${name}: ${words}`)
+
+        li.appendChild(textNode)
+
+            return li
+    }
+
+
+}())
